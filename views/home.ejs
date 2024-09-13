@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shortify</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(-45deg, #1a2a6c, #b21f1f, #fdbb2d, #09a992);
+        background-size: 400% 400%;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        animation: gradientBG 15s ease infinite;
+      }
+
+      /* Background gradient animation */
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-bottom: 25px;
+    width: auto;
+}
+
+.navbar .brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fdbb2d;
+}
+
+/* Align the list of links to the right */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    margin-left: auto; /* Pushes the links to the right */
+}
+
+.navbar ul li {
+    display: inline-block;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.hamburger {
+    display: none;
+}
+
+      .messages {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .messages p {
+        width: 90%;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        text-shadow: 1px 1px 2px #000;
+
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+      .messages a {
+        color: #fdbb2d;
+      }
+
+      /* Main Section */
+      .main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        flex-direction: column;
+      }
+
+      .main-container form {
+        width: 90%;
+        text-align: center;
+        color: #fdbb2d;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        text-shadow: 1px 1px 2px #000;
+
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+
+      .main-container input[type="text"] {
+        width: 90%;
+        padding: 12px;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .main-container button {
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        background-color: #fdbb2d;
+        color: #1a2a6c;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .main-container button:hover {
+        background-color: #fff;
+        color: #1a2a6c;
+      }
+
+      /* Table Styles */
+      table {
+        width: 90%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+      }
+
+      th {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      /* Ensuring the shortened URLs remain visible in all backgrounds */
+      td a {
+        color: #fdbb2d;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        text-shadow: 1px 1px 2px #000; /* Added shadow to ensure visibility */
+      }
+
+      td a:hover {
+        color: white;
+      }
+
+      td {
+        max-width: 300px; /* Limits how wide a cell can be */
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .main-container input[type="text"],
+        .main-container button,
+        table {
+          width: 100%;
+        }
+
+        td {
+          word-break: break-word;
+        }
+      }
+    </style>
+       <script>
+        function validateForm() {
+            const urlInput = document.forms["urlForm"]["url"].value;
+            if (urlInput === "") {
+                alert("Please enter a URL.");
+                return false;
+            }
+        }
+    </script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="brand">Shortify</div>
+      <ul>
+        <li><a href="http://localhost:8001/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="http://localhost:8001/admin/urls">Admin</a></li>
+        <li><a href="http://localhost:8001/logout">Logout</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+    <div class="messages">
+      <% if (locals.message) { %>
+      <p id="message" style="text-align: center">
+        Unauthorized for Admin role
+        <a href="http://localhost:8001/">Click here</a> to go back to home page
+      </p>
+
+      <% } %>
+    </div>
+
+    <!-- Main Section -->
+    <div class="main-container">
+      <form name="urlForm" method="POST" action="/url" onsubmit="return validateForm()">
+        <label for="url"><b>Enter Your Original URL</b></label><br />
+        <input type="text" name="url" placeholder="https://example.com" /><br />
+        <button type="submit">Generate</button>
+    </form>
+
+      <% if (locals.id) { %>
+      <p style="text-align: center">
+        Shortened URL:
+        <a href="http://localhost:8001/url/<%= id %>"
+          >http://localhost:8001/url/<%= id %></a
+        >
+      </p>
+      <button onclick="window.location.href='/';">Go Back</button>
+      <% } %> <% if (locals.urls) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>ShortID</th>
+            <th>Shortened URLs</th>
+            <th>Redirect to</th>
+            <th>Total Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% urls.forEach((url, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= url.shortId %></td>
+            <td>
+              <a href="http://localhost:8001/url/<%= url.shortId %>"
+                >http://localhost:8001/url/<%= url.shortId %></a
+              >
+            </td>
+            <td><%= url.redirectURL %></td>
+            <td><%= url.visitHistory.length %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.querySelector(".navbar");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

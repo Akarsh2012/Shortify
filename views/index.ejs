@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortify - URL Shortener</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* Background gradient animation */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fdbb2d;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin: 100px auto;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #fdbb2d;
+            margin-bottom: 20px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #f0f0f0;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .hero button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            background-color: #fdbb2d;
+            color: #1a2a6c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: popIn 1.3s ease-in-out;
+        }
+
+        .hero button:hover {
+            background-color: #fff;
+            color: #1a2a6c;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .navbar ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .navbar.active ul {
+                display: block;
+                text-align: center;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+            }
+
+            .navbar ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">Shortify</div>
+        <ul>
+            <li><a href="http://localhost:8001/shortify">Home</a></li>
+            
+            <li><a href="http://localhost:8001/login">Login</a></li>
+            <li><a href="http://localhost:8001/signup">Signup</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Shortify</h1>
+        <p>Welcome to Shortify, the easiest way to shorten your long, cumbersome URLs. Whether you're sharing on social media or tracking link clicks, Shortify offers a simple solution. Start by signing up or logging in to shorten your first link!</p>
+        <button onclick="location.href='/signup'">Get Started</button>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navbar = document.querySelector('.navbar');
+
+        hamburger.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

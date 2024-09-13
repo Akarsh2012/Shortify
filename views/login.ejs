@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Shortify</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* Background Gradient Animation */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+         /* Navbar */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fdbb2d;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+             margin-left: auto;
+        }
+
+        .navbar ul li {
+            display: inline-block;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        /* Login Form */
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .login-box h1 {
+            color: #fdbb2d;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-box label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #f0f0f0;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #1a2a6c;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            background-color: #fdbb2d;
+            border: none;
+            border-radius: 5px;
+            color: #1a2a6c;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: popIn 1.3s ease-in-out;
+        }
+
+        .login-box button:hover {
+            background-color: #fff;
+        }
+
+        .login-box .signup-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .login-box .signup-text a {
+            color: #fdbb2d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .login-box .signup-text a:hover {
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-box {
+                width: 90%;
+            }
+
+            .login-box h1 {
+                font-size: 2rem;
+            }
+
+            .login-box label {
+                font-size: 1rem;
+            }
+
+            .login-box input {
+                font-size: 0.9rem;
+            }
+
+            .login-box button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">Shortify</div>
+        <ul>
+            <li><a href="http://localhost:8001/shortify">Home</a></li>
+            
+            <li><a href="http://localhost:8001/login">Login</a></li>
+            <li><a href="http://localhost:8001/signup">Signup</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Login</h1>
+            <form action="/user/login" method="post">
+                <label for="email">Email:</label>
+                <input type="text" required name="email" placeholder="xyz@gmail.com" />
+
+                <label for="password">Password:</label>
+                <input type="password" required name="password" placeholder="Enter your password" />
+
+                <button type="submit">Login</button>
+            </form>
+            <div class="signup-text">
+                Not a user? <a href="http://localhost:8001/signup">Sign up here</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
