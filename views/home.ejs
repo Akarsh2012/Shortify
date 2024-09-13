@@ -220,10 +220,10 @@
     <nav class="navbar">
       <div class="brand">Shortify</div>
       <ul>
-        <li><a href="http://localhost:8001/">Home</a></li>
+        <li><a href="https://shortify-n3ul.onrender.com/">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="http://localhost:8001/admin/urls">Admin</a></li>
-        <li><a href="http://localhost:8001/logout">Logout</a></li>
+        <li><a href="https://shortify-n3ul.onrender.com/admin/urls">Admin</a></li>
+        <li><a href="https://shortify-n3ul.onrender.com/logout">Logout</a></li>
       </ul>
       <div class="hamburger" id="hamburger">
         <div></div>
@@ -235,7 +235,7 @@
       <% if (locals.message) { %>
       <p id="message" style="text-align: center">
         Unauthorized for Admin role
-        <a href="http://localhost:8001/">Click here</a> to go back to home page
+        <a href="https://shortify-n3ul.onrender.com/">Click here</a> to go back to home page
       </p>
 
       <% } %>
@@ -252,8 +252,8 @@
       <% if (locals.id) { %>
       <p style="text-align: center">
         Shortened URL:
-        <a href="http://localhost:8001/url/<%= id %>"
-          >http://localhost:8001/url/<%= id %></a
+        <a href="https://shortify-n3ul.onrender.com/url/<%= id %>"
+          >https://shortify-n3ul.onrender.com/url/<%= id %></a
         >
       </p>
       <button onclick="window.location.href='/';">Go Back</button>
@@ -274,8 +274,8 @@
             <td><%= index + 1 %></td>
             <td><%= url.shortId %></td>
             <td>
-              <a href="http://localhost:8001/url/<%= url.shortId %>"
-                >http://localhost:8001/url/<%= url.shortId %></a
+              <a href="https://shortify-n3ul.onrender.com/url/<%= url.shortId %>"
+                >https://shortify-n3ul.onrender.com/url/<%= url.shortId %></a
               >
             </td>
             <td><%= url.redirectURL %></td>
