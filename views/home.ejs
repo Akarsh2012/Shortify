@@ -189,6 +189,19 @@
       td {
         max-width: 300px; /* Limits how wide a cell can be */
       }
+         /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+        }
 
       /* Responsive Design */
       @media (max-width: 768px) {
@@ -201,6 +214,27 @@
         td {
           word-break: break-word;
         }
+
+            .navbar ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .navbar.active ul {
+                display: block;
+                text-align: center;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+            }
+
+            .navbar ul li {
+                display: block;
+                margin: 10px 0;
+            }
       }
     </style>
        <script>

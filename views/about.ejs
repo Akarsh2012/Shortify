@@ -144,9 +144,44 @@
                 transform: scale(1);
             }
         }
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+           
+
+            .navbar ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .navbar.active ul {
+                display: block;
+                text-align: center;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+            }
+
+            .navbar ul li {
+                display: block;
+                margin: 10px 0;
+            }
             .about-container h1 {
                 font-size: 2.5rem;
             }
@@ -159,6 +194,9 @@
                 font-size: 1rem;
             }
         }
+
+        
+       
     </style>
 </head>
 <body>
@@ -191,6 +229,15 @@
         </p>
         <a href="/" class="button">Go Back to Home</a>
     </div>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.querySelector(".navbar");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+    </script>
 </body>
 </html>
 
