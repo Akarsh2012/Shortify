@@ -54,6 +54,13 @@
 ## Usage
 - Access the application at: https://shortify-n3ul.onrender.com/shortify
 - Use the provided form to shorten URLs and track analytics.
+
+## Future Improvements 
+- **Link Expiration**:  Implement a feature that allows users to set an expiration date for shortened URLs, automatically removing them after the set date.
+- **Validity of the Original link**: To ensure that the original link is valid or not.
+- **Collision Handling**: Implement or modify the short id logic by continuously generating shortid till we did not get a unique one.
+  
 ## Contributing
 - Contributions are welcome. Please fork the repository and submit a pull request.
+
    
